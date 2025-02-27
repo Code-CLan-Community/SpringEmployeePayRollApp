@@ -3,21 +3,20 @@ package com.example.Spring_PayRoll_App.service;
 import com.example.Spring_PayRoll_App.dto.EmployeeDTO;
 import com.example.Spring_PayRoll_App.model.Employee;
 import com.example.Spring_PayRoll_App.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
-
-
 @Service
 public class EmployeeService {
 
-    @Autowired
-    private EmployeeRepository repository;
+    private final EmployeeRepository repository;
+
+    public EmployeeService(EmployeeRepository repository) {
+        this.repository = repository;
+    }
 
     // Convert Employee to DTO
     private EmployeeDTO convertToDTO(Employee employee) {
@@ -55,4 +54,3 @@ public class EmployeeService {
         repository.deleteById(id);
     }
 }
-

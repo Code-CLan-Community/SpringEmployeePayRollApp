@@ -3,16 +3,15 @@ package com.example.Spring_PayRoll_App.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "employees") // Explicitly defining table name
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Ensures name cannot be null in the DB
     private String name;
 
-    @Column(nullable = false)
     private Double salary;
 
     // Constructors

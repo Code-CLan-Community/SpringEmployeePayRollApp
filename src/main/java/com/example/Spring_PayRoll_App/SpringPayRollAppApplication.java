@@ -8,5 +8,5 @@ public class SpringPayRollAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringPayRollAppApplication.class, args);
 	}
-
 }
+

@@ -1,6 +1,5 @@
 package com.example.Spring_PayRoll_App.dto;
 
-
 public class EmployeeDTO {
     private String name;
     private Double salary;
