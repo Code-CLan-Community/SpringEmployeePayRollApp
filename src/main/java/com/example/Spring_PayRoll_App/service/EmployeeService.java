@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class EmployeeService {
     private final List<Employee> employeeList = new ArrayList<>();
@@ -17,6 +19,7 @@ public class EmployeeService {
         Employee employee = new Employee(employeeDTO.getName(), employeeDTO.getSalary());
         employee.setId(nextId++);
         employeeList.add(employee);
+        log.info("Added Employee: {}", employee);
         return employee;
     }
 
@@ -36,12 +39,17 @@ public class EmployeeService {
         employeeOptional.ifPresent(employee -> {
             employee.setName(employeeDTO.getName());
             employee.setSalary(employeeDTO.getSalary());
+            log.info("Updated Employee with ID {}: {}", id, employee);
         });
         return employeeOptional;
     }
 
     // Delete Employee
     public boolean deleteEmployee(Long id) {
-        return employeeList.removeIf(employee -> employee.getId().equals(id));
+        boolean removed = employeeList.removeIf(employee -> employee.getId().equals(id));
+        if (removed) {
+            log.info("Deleted Employee with ID {}", id);
+        }
+        return removed;
     }
 }
