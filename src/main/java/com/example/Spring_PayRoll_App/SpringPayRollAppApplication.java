@@ -9,4 +9,4 @@ public class SpringPayRollAppApplication {
 		SpringApplication.run(SpringPayRollAppApplication.class, args);
 	}
 
-}
+}	
