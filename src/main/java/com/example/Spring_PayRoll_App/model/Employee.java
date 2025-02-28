@@ -5,7 +5,8 @@ import lombok.*;
 
 @Entity
 @Table(name = "employees")
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
@@ -14,7 +15,10 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false) // Ensures name cannot be null in DB
     private String name;
+
+    @Column(nullable = false) // Ensures salary cannot be null
     private double salary;
 
     public Employee(String name, double salary) {

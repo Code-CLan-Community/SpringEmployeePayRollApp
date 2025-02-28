@@ -27,6 +27,15 @@ public class CustomExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
+    // Handle Employee Not Found Exception
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleEmployeeNotFoundException(EmployeeNotFoundException ex) {
+        Map<String, String> response = new HashMap<>();
+        response.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
     // Handle generic exceptions
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleGlobalException(Exception ex) {
